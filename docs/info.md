@@ -1,20 +1,11 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+This project outputs a different bit pattern on each clock cycle and then resets.
 
 ## How to test
 
-Explain how to use your project
+To test this project, apply a reset signal, cycle the clock several times and compare to the expected outputs.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+GPIOs can be measured directly to test performance.

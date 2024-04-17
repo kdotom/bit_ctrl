@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ns/1ns
-module project (
+module tt_um_bit_ctrl (
     input wire clk,
     input wire reset,
     output reg [7:0] out
