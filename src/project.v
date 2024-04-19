@@ -30,6 +30,9 @@ always @(posedge clk or negedge rst_n) begin
             counter <= 3'b000;
         end
     end
+end
+
+always @(*) begin
     case (counter)
         3'b000: out = 8'b10010000;
         3'b001: out = 8'b00011000;
