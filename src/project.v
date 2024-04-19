@@ -13,16 +13,15 @@ module tt_um_bit_ctrl (
 
 wire reset;
 reg [7:0] out;
-
 reg [2:0] counter;
 
 //assign clk = ui_in[0];
-assign reset = !(rst_n);
+//assign reset = !(rst_n);
 assign uo_out = out;
 
 
-always @(posedge clk or posedge reset) begin
-    if (reset) begin
+always @(posedge clk or negedge rst_n) begin
+    if !(rst_n) begin
         counter <= 3'b000;
     end else begin
         if (counter < 3'b101) begin
@@ -41,9 +40,5 @@ always @(posedge clk or posedge reset) begin
         default: out = 8'b00000000;
     endcase
 end
-
-always @(posedge clk) begin
-end
-
 
 endmodule
