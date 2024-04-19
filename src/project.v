@@ -1,12 +1,25 @@
 `default_nettype none
 `timescale 1ns/1ns
 module tt_um_bit_ctrl (
-    input wire clk,
-    input wire reset,
-    output reg [7:0] out
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // will go high when the design is enabled
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
 );
 
+wire reset;
+reg [7:0] out;
+
 reg [2:0] counter;
+
+//assign clk = ui_in[0];
+assign reset = !(rst_n);
+assign uo_out = out;
+
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
@@ -18,9 +31,6 @@ always @(posedge clk or posedge reset) begin
             counter <= 3'b000;
         end
     end
-end
-
-always @(*) begin
     case (counter)
         3'b000: out = 8'b10010000;
         3'b001: out = 8'b00011000;
@@ -31,5 +41,9 @@ always @(*) begin
         default: out = 8'b00000000;
     endcase
 end
+
+always @(posedge clk) begin
+end
+
 
 endmodule
