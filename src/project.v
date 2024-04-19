@@ -21,7 +21,7 @@ assign uo_out = out;
 
 
 always @(posedge clk or negedge rst_n) begin
-    if !(rst_n) begin
+    if (!rst_n) begin
         counter <= 3'b000;
     end else begin
         if (counter < 3'b101) begin
