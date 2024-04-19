@@ -1,5 +1,5 @@
 `default_nettype none
-`timescale 1ns/1ns
+//`timescale 1ns/1ns
 module tt_um_bit_ctrl (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
