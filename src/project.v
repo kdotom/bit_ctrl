@@ -19,6 +19,7 @@ reg [2:0] counter;
 //assign reset = !(rst_n);
 assign uo_out = out;
 assign uio_oe  = 0;
+assign uio_out = 0;
 
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
